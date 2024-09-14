@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Price from "./Price";
 
 export default function Product(props) {
-  console.log(props);
   return (
     <div className="product">
       <Link to={`/products/${props.id}`}>
@@ -16,8 +15,8 @@ export default function Product(props) {
         <p className="product-name">{props.name}</p>
         <div className="product-price">
           <Price
-            finalPrice={props.finalPrice}
-            originalPrice={props.originalPrice}
+            finalPrice={props.final_price}
+            originalPrice={props.original_price}
           />
         </div>
       </Link>

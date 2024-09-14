@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+
 import Navbar from "./Navbar";
 import Landing from "./Landing";
 import Login from "./Login";
@@ -26,11 +28,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Products />,
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <Products />
+          </Suspense>
+        ),
       },
       {
         path: "/products/:id",
-        element: <ProductDetails />,
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <ProductDetails />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",

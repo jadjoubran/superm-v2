@@ -1,24 +1,17 @@
 import Price from "./Price";
 import { Link, useParams } from "react-router-dom";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { get } from "./lib/fetcher";
 
 export default function ProductDetails() {
   const { id } = useParams();
 
-  const details = {
-    id,
-    name: "Product " + id,
-    finalPrice: 100,
-    originalPrice: 120,
-    thumbnail:
-      "https://res.cloudinary.com/dbfn5lnvx/image/upload/q_auto/v1607769454/react-tutorial/products/final/cheese.png",
-    nutrition: {
-      protein: 25,
-      carbs: 10,
-      fat: 5,
-    },
-    description: `400g pre-cut pineapple pieces sold at €4 per piece.<br><br>
-    Deserunt consectetur commodo qui velit ea ex reprehenderit amet est ut cupidatat proident qui. Reprehenderit proident voluptate aliqua eu elit sit. Deserunt sit tempor occaecat nisi deserunt deserunt cupidatat labore id labore dolore sit amet.`,
-  };
+  const { data } = useSuspenseQuery({
+    queryKey: ["products/details", id],
+    queryFn: () => get(`products?id=eq.${id}`),
+  });
+
+  const details = data[0];
 
   return (
     <>
@@ -63,8 +56,8 @@ export default function ProductDetails() {
           <h1 className="details-name">{details.name}</h1>
           <p className="details-price">
             <Price
-              finalPrice={details.finalPrice}
-              originalPrice={details.originalPrice}
+              finalPrice={details.final_price}
+              originalPrice={details.original_price}
             />
           </p>
           <p

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 export default function Navbar() {
   const [light, setLight] = useState(true);
+  const { user } = use(UserContext);
 
   function handleToggleTheme() {
     const newValue = !light;
@@ -28,12 +30,15 @@ export default function Navbar() {
           <li className="nav-item">
             <NavLink to="/">Home</NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink to="/login">Login</NavLink>
-          </li>
-          {/* <li className="nav-item"> */}
-          {/* <NavLink to="/profile">Profile</NavLink> */}
-          {/* </li> */}
+          {user ? (
+            <li className="nav-item">
+              <NavLink to="/profile">Profile</NavLink>
+            </li>
+          ) : (
+            <li className="nav-item">
+              <NavLink to="/login">Login</NavLink>
+            </li>
+          )}
           <li className="nav-item">
             <NavLink
               to="/products"
