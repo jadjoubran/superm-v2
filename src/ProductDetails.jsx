@@ -1,10 +1,13 @@
+import { use } from "react";
 import Price from "./Price";
 import { Link, useParams } from "react-router-dom";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import { CartContext } from "./CartContext";
 import { get } from "./lib/fetcher";
 
 export default function ProductDetails() {
   const { id } = useParams();
+  const { handleAddProduct } = use(CartContext);
 
   const { data } = useSuspenseQuery({
     queryKey: ["products/details", id],
@@ -65,7 +68,12 @@ export default function ProductDetails() {
             dangerouslySetInnerHTML={{ __html: details.description }}
           ></p>
           <div className="details-a2c">
-            <button className="btn btn-block">Add to cart</button>
+            <button
+              className="btn btn-block"
+              onClick={() => handleAddProduct(details)}
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </div>

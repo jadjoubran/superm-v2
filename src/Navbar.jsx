@@ -1,10 +1,12 @@
 import { use, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { UserContext } from "./UserContext";
+import { CartContext } from "./CartContext";
 
 export default function Navbar() {
   const [light, setLight] = useState(true);
   const { user } = use(UserContext);
+  const { cartCount } = use(CartContext);
 
   function handleToggleTheme() {
     const newValue = !light;
@@ -49,7 +51,7 @@ export default function Navbar() {
           </li>
         </ul>
         <Link to="/cart" className="btn btn-nav">
-          Cart (0)
+          Cart ({cartCount})
         </Link>
       </nav>
     </div>

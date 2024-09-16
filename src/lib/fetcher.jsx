@@ -8,9 +8,7 @@ export function get(endpoint) {
     headers: {
       apikey: apitoken,
     },
-  })
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
+  }).then((response) => response.json());
 }
 
 export function callApi(method, endpoint, data) {
@@ -21,7 +19,5 @@ export function callApi(method, endpoint, data) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
+  }).then((response) => response.json());
 }

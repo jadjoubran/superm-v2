@@ -137,6 +137,9 @@ body.dark {
 .btn:active {
   translate: 0.5px 0.5px;
 }
+.btn:disabled {
+  opacity: 0.5;
+}
 .btn-block {
   width: 100%;
   text-align: center;
@@ -266,6 +269,11 @@ td {
 .cart-wrapper {
   max-width: 500px;
   margin-inline: auto;
+}
+
+.login-error {
+  color: var(--primary);
+  margin-top: 0;
 }
 
 .label {
