@@ -384,6 +384,12 @@ a {
   margin-top: 32px;
 }
 
+.loading {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+}
+
 .products-not-found {
   display: grid;
   place-items: center;

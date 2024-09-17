@@ -8,11 +8,16 @@ import Profile from "./Profile";
 import Products from "./Products";
 import ProductDetails from "./ProductDetails";
 import Cart from "./Cart";
+import HandleErrors from "./HandleErrors";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout />,
+    element: (
+      <HandleErrors>
+        <AppLayout />
+      </HandleErrors>
+    ),
     children: [
       {
         path: "/",
@@ -29,7 +34,7 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: (
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<p className="loading">Loading...</p>}>
             <Products />
           </Suspense>
         ),
@@ -37,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: "/products/:id",
         element: (
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<p className="loading">Loading...</p>}>
             <ProductDetails />
           </Suspense>
         ),
