@@ -9,7 +9,6 @@ export default function Cart() {
     use(CartContext);
   const { user } = use(UserContext);
 
-  console.log(cart);
   if (cart.length === 0) {
     return (
       <div className="cart-wrapper">
@@ -54,6 +53,10 @@ export default function Cart() {
         </div>
       ))}
 
+      <div className="cart-total">
+        <h2>Your total price</h2>
+        <p className="cart-total-value">${(cartSum / 100).toFixed(2)}</p>
+      </div>
       <form>
         <label className="label" htmlFor={emailId}>
           Email<span className="required">*</span>:
