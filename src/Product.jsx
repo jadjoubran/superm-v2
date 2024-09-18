@@ -8,6 +8,8 @@ export default function Product(props) {
         <div>
           <img
             className="product-image"
+            width="272"
+            height="300"
             src={props.thumbnail}
             alt={props.name}
           />

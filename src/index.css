@@ -211,6 +211,8 @@ h1 {
   text-decoration: none;
   color: inherit;
   font-size: 0.7rem;
+  display: block;
+  margin-bottom: 32px;
 }
 
 .details {
@@ -219,9 +221,10 @@ h1 {
   gap: 68px;
 }
 .details-image {
-  width: auto;
-  height: 300px;
   border-radius: 8px;
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .nutrition {

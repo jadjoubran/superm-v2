@@ -7,6 +7,7 @@ export default function Products() {
   const { data: products } = useSuspenseQuery({
     queryKey: ["products"],
     queryFn: () => get("products-list"),
+    staleTime: 1000 * 60 * 5, // 5 minutes
   });
 
   const [, startTransition] = useTransition();
