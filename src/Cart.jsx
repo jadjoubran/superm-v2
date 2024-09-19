@@ -57,7 +57,7 @@ export default function Cart() {
         <h2>Your total price</h2>
         <p className="cart-total-value">${(cartSum / 100).toFixed(2)}</p>
       </div>
-      <form>
+      <form onSubmit={(event) => event.preventDefault()}>
         <label className="label" htmlFor={emailId}>
           Email<span className="required">*</span>:
         </label>
@@ -73,8 +73,7 @@ export default function Cart() {
           delivered to you the same day!
         </p>
         <p className="cart-notice cart-warning">
-          Enter your own Stripe Publishable Key in Cart.js for the checkout to
-          work.
+          This is a demo, so the form does not submit any data.
         </p>
         <div className="cart-button-wrapper">
           <input type="submit" value="Pay" className="btn" />
