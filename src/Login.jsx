@@ -1,4 +1,4 @@
-import { use, useId, useState } from "react";
+import { use, useEffect, useId, useRef, useState } from "react";
 import { UserContext } from "./UserContext";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ export default function Login() {
   const passwordId = useId();
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
+  const emailRef = useRef(null);
 
   const mutation = useMutation({
     mutationFn: (data) => {
@@ -33,6 +34,12 @@ export default function Login() {
       }
     },
   });
+
+  useEffect(() => {
+    if (emailRef.current) {
+      emailRef.current.focus();
+    }
+  }, []);
 
   function handleLogin(event) {
     event.preventDefault();
@@ -62,6 +69,7 @@ export default function Login() {
             className="input"
             placeholder="Email"
             disabled={mutation.isPending}
+            ref={emailRef}
           />
           <label className="label" htmlFor={passwordId}>
             Password<span className="required">*</span>:
