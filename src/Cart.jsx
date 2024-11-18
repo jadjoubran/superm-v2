@@ -47,9 +47,9 @@ export default function Cart() {
                 </li>
               </ul>
             </div>
-            <p>{product.final_price}</p>
+            <p>${product.final_price}</p>
           </div>
-          <p>{((product.final_price * product.quantity) / 100).toFixed(2)}</p>
+          <p>${((product.final_price * product.quantity) / 100).toFixed(2)}</p>
         </div>
       ))}
 
