@@ -13,6 +13,7 @@ export default function Cart() {
     return (
       <div className="cart-wrapper">
         <h1>Your cart</h1>
+        <title>Cart | SuperM</title>
         <p>
           Your cart is empty. Add a product from the{" "}
           <Link to="/products">products</Link> page.
@@ -24,6 +25,7 @@ export default function Cart() {
   return (
     <div className="cart-wrapper">
       <h1>Your cart</h1>
+      <title>Cart | SuperM</title>
       {cart.map((product) => (
         <div key={product.id} className="cart-product">
           <img

@@ -25,6 +25,7 @@ export default function Profile() {
     <>
       <div className="profile-wrapper">
         <h1>Profile</h1>
+        <title>Profile | SuperM</title>
         <p className="text-dimmed">
           You are logged in as <strong>{user.username}</strong>.
         </p>

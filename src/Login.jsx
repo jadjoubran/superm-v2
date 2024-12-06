@@ -54,6 +54,7 @@ export default function Login() {
   return (
     <>
       <div className="profile-wrapper">
+        <title>Login | SuperM</title>
         <h1>Login</h1>
         <p className="text-dimmed">
           Login using test@example.com and any password.

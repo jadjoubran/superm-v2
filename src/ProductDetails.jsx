@@ -22,6 +22,7 @@ export default function ProductDetails() {
       <Link to="/products" className="back">
         &lsaquo; Back to products
       </Link>
+      <title>{`${details.name} | SuperM`}</title>
       <div className="details">
         <div>
           <img

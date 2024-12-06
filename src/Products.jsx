@@ -27,6 +27,7 @@ export default function Products() {
     <>
       <div className="products-title">
         <h1>Products</h1>
+        <title>Products | SuperM</title>
         <input
           type="search"
           className="search"
