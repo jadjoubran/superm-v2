@@ -1,5 +1,6 @@
-import { Suspense } from "react";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { useState, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router";
+import { ErrorBoundary } from "react-error-boundary";
 
 import Navbar from "./Navbar";
 import Landing from "./Landing";
@@ -8,74 +9,58 @@ import Profile from "./Profile";
 import Products from "./Products";
 import ProductDetails from "./ProductDetails";
 import Cart from "./Cart";
-import HandleErrors from "./HandleErrors";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <HandleErrors>
-        <AppLayout />
-      </HandleErrors>
-    ),
-    children: [
-      {
-        path: "/",
-        element: <Landing />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/profile",
-        element: <Profile />,
-      },
-      {
-        path: "/products",
-        element: (
-          <Suspense fallback={<p className="loading">Loading...</p>}>
-            <Products />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/products/:id",
-        element: (
-          <Suspense fallback={<p className="loading">Loading...</p>}>
-            <ProductDetails />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
-      {
-        path: "*",
-        element: <h1>Page not found</h1>,
-      },
-    ],
-  },
-]);
-
-function AppLayout() {
+function Fallback({ error }) {
   return (
-    <>
-      <div className="wrapper-gray">
-        <div className="container">
-          <Navbar />
-        </div>
-      </div>
-      <div className="container page-wrapper">
-        <Outlet />
-      </div>
-    </>
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre style={{ color: "red" }}>{error.message}</pre>
+    </div>
   );
 }
 
 function App() {
-  return <RouterProvider router={router} />;
+  const [user, setUser] = useState(null);
+
+  return (
+    <ErrorBoundary FallbackComponent={Fallback}>
+      <BrowserRouter>
+        <div className="wrapper-gray">
+          <div className="container">
+            <Navbar user={user} />
+          </div>
+        </div>
+        <div className="container page-wrapper">
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/login" element={<Login setUser={setUser} />} />
+            <Route
+              path="/profile"
+              element={<Profile user={user} setUser={setUser} />}
+            />
+            <Route
+              path="/products"
+              element={
+                <Suspense fallback={<p className="loading">Loading...</p>}>
+                  <Products />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/products/:id"
+              element={
+                <Suspense fallback={<p className="loading">Loading...</p>}>
+                  <ProductDetails />
+                </Suspense>
+              }
+            />
+            <Route path="/cart" element={<Cart user={user} />} />
+            <Route path="*" element={<h1>Page not found</h1>} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </ErrorBoundary>
+  );
 }
 
 export default App;

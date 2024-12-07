@@ -1,9 +1,7 @@
-import { use, useEffect } from "react";
-import { UserContext } from "./UserContext";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
-export default function Profile() {
-  const { user, setUser } = use(UserContext);
+export default function Profile({ user, setUser }) {
   const navigate = useNavigate();
 
   function handleLogout() {

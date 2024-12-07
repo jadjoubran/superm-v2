@@ -1,7 +1,7 @@
 import { useState, useTransition } from "react";
 import Product from "./Product";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { get } from "./lib/fetcher";
+import { get } from "./fetcher";
 
 export default function Products() {
   const { data: products } = useSuspenseQuery({

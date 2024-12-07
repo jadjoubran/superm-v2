@@ -1,9 +1,9 @@
 import { use } from "react";
 import Price from "./Price";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { CartContext } from "./CartContext";
-import { get } from "./lib/fetcher";
+import { get } from "./fetcher";
 
 export default function ProductDetails() {
   const { id } = useParams();

@@ -1,11 +1,9 @@
-import { use, useEffect, useId, useRef, useState } from "react";
-import { UserContext } from "./UserContext";
+import { useEffect, useId, useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
-import { callApi } from "./lib/fetcher";
+import { useNavigate } from "react-router";
+import { callApi } from "./fetcher";
 
-export default function Login() {
-  const { setUser } = use(UserContext);
+export default function Login({ setUser }) {
   const emailId = useId();
   const passwordId = useId();
   const navigate = useNavigate();
@@ -69,6 +67,7 @@ export default function Login() {
             type="email"
             className="input"
             placeholder="Email"
+            autoComplete="email"
             disabled={mutation.isPending}
             ref={emailRef}
           />
@@ -81,6 +80,7 @@ export default function Login() {
             type="password"
             className="input"
             placeholder="Password"
+            autoComplete="current-password"
             disabled={mutation.isPending}
           />
           <p className="login-error">{errorMessage}</p>
