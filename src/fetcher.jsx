@@ -13,7 +13,7 @@ export function get(endpoint) {
 
 export function callApi(method, endpoint, data) {
   return fetch(BASE_URL + endpoint, {
-    method: method,
+    method,
     headers: {
       apikey,
       "Content-Type": "application/json",
