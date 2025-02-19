@@ -34,9 +34,7 @@ export default function Login({ setUser }) {
   });
 
   useEffect(() => {
-    if (emailRef.current) {
-      emailRef.current.focus();
-    }
+    emailRef.current.focus();
   }, []);
 
   function handleLogin(event) {
