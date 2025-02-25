@@ -1,11 +1,11 @@
-import { useId, use } from "react";
+import { useId, useContext } from "react";
 import { Link } from "react-router";
 import { CartContext } from "./CartContext";
 
 export default function Cart({ user }) {
   const emailId = useId();
   const { cart, cartSum, handleAddProduct, handleRemoveProduct } =
-    use(CartContext);
+    useContext(CartContext);
 
   if (cart.length === 0) {
     return (

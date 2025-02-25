@@ -1,4 +1,4 @@
-import { use } from "react";
+import { useContext } from "react";
 import Price from "./Price";
 import { Link, useParams } from "react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
@@ -7,7 +7,7 @@ import { get } from "./fetcher";
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const { handleAddProduct } = use(CartContext);
+  const { handleAddProduct } = useContext(CartContext);
 
   const { data } = useSuspenseQuery({
     queryKey: ["products/details", id],

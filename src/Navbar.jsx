@@ -1,10 +1,10 @@
-import { use, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { CartContext } from "./CartContext";
 
 export default function Navbar({ user }) {
   const [light, setLight] = useState(true);
-  const { cartCount } = use(CartContext);
+  const { cartCount } = useContext(CartContext);
 
   function handleToggleTheme() {
     const newValue = !light;
