@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
-export default function Profile({ user, setUser }) {
+export default function Profile({ user, onUserLogout }) {
   const navigate = useNavigate();
 
   function handleLogout() {
-    setUser(null);
+    onUserLogout();
     navigate("/");
   }
 

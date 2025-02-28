@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 import { callApi } from "./fetcher";
 
-export default function Login({ setUser }) {
+export default function Login({ onUserLogin }) {
   const emailId = useId();
   const passwordId = useId();
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ export default function Login({ setUser }) {
         return;
       }
       if (data?.[0]) {
-        setUser(data[0]);
+        onUserLogin(data[0]);
         navigate("/profile");
       }
     },

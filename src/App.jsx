@@ -11,6 +11,14 @@ import Cart from "./Cart";
 function App() {
   const [user, setUser] = useState(null);
 
+  function handleUserLogin(newUser) {
+    setUser(newUser);
+  }
+
+  function handleUserLogout() {
+    setUser(null);
+  }
+
   return (
     <BrowserRouter>
       <div className="wrapper-gray">
@@ -21,10 +29,13 @@ function App() {
       <div className="container page-wrapper">
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route
+            path="/login"
+            element={<Login onUserLogin={handleUserLogin} />}
+          />
           <Route
             path="/profile"
-            element={<Profile user={user} setUser={setUser} />}
+            element={<Profile user={user} onUserLogout={handleUserLogout} />}
           />
           <Route
             path="/products"
