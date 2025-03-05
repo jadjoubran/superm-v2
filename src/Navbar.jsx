@@ -40,12 +40,7 @@ export default function Navbar({ user }) {
             </li>
           )}
           <li className="nav-item">
-            <NavLink
-              to="/products"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Products
-            </NavLink>
+            <NavLink to="/products">Products</NavLink>
           </li>
         </ul>
         <Link to="/cart" className="btn btn-nav">
