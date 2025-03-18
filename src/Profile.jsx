@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Navigate } from "react-router";
 
 export default function Profile({ user, onUserLogout }) {
   const navigate = useNavigate();
@@ -9,14 +8,8 @@ export default function Profile({ user, onUserLogout }) {
     navigate("/");
   }
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    }
-  }, [user, navigate]);
-
   if (!user) {
-    return null;
+    return <Navigate to="/login" />;
   }
 
   return (
