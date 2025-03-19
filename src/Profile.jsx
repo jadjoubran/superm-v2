@@ -9,7 +9,7 @@ export default function Profile({ user, onUserLogout }) {
   }
 
   if (!user) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" replace />;
   }
 
   return (
