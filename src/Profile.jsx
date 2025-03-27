@@ -1,11 +1,8 @@
-import { useNavigate, Navigate } from "react-router";
+import { Navigate } from "react-router";
 
 export default function Profile({ user, onUserLogout }) {
-    const navigate = useNavigate();
-
     function handleLogout() {
         onUserLogout();
-        navigate("/login");
     }
 
     if (!user) {
