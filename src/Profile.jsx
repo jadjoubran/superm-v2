@@ -1,10 +1,6 @@
 import { Navigate } from "react-router";
 
 export default function Profile({ user, onUserLogout }) {
-    function handleLogout() {
-        onUserLogout();
-    }
-
     if (!user) {
         return <Navigate to="/login" replace />;
     }
@@ -22,7 +18,7 @@ export default function Profile({ user, onUserLogout }) {
                         type="button"
                         value="Logout"
                         className="btn"
-                        onClick={handleLogout}
+                        onClick={onUserLogout}
                     />
                 </div>
             </div>
