@@ -30,15 +30,9 @@ export default function Navbar({ user }) {
                     <li className="nav-item">
                         <NavLink to="/">Home</NavLink>
                     </li>
-                    {user ? (
-                        <li className="nav-item">
-                            <NavLink to="/profile">Profile</NavLink>
-                        </li>
-                    ) : (
-                        <li className="nav-item">
-                            <NavLink to="/login">Login</NavLink>
-                        </li>
-                    )}
+                    <li className="nav-item">
+                        {user ? <NavLink to="/profile">Profile</NavLink> : <NavLink to="/login">Login</NavLink>}
+                    </li>
                     <li className="nav-item">
                         <NavLink to="/products">Products</NavLink>
                     </li>
