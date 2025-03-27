@@ -5,7 +5,7 @@ export default function Profile({ user, onUserLogout }) {
 
     function handleLogout() {
         onUserLogout();
-        navigate("/");
+        navigate("/login");
     }
 
     if (!user) {
