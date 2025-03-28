@@ -1,11 +1,9 @@
-export default function Price(props) {
+export default function Price({originalPrice, finalPrice}) {
     return (
         <>
-            ${(props.finalPrice / 100).toFixed(2)}{" "}
-            {props.finalPrice !== props.originalPrice ? (
-                <span className="price-old">
-                    ${(props.originalPrice / 100).toFixed(2)}
-                </span>
+            ${(finalPrice / 100).toFixed(2)}
+            {finalPrice !== originalPrice ? (
+                <span className="price-old">${(originalPrice / 100).toFixed(2)}</span>
             ) : null}
         </>
     );
