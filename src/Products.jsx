@@ -56,7 +56,7 @@ export default function Products() {
             ) : null}
             <div className="products-grid">
                 {filteredProducts.map((product) => (
-                    <Product key={product.id} {...product} />
+                    <Product key={product.id} details={product} />
                 ))}
             </div>
         </>
