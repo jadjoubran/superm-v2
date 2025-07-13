@@ -12,16 +12,20 @@ export default function Products() {
 
     const [, startTransition] = useTransition();
     const [query, setQuery] = useState("");
+    const [filteredProducts, setFilteredProducts] = useState(products);
 
     function handleSearchChange(event) {
+        setQuery(event.target.value.trim().toLowerCase());
         startTransition(() => {
-            setQuery(event.target.value.trim().toLowerCase());
+            setFilteredProducts(
+                products.filter((product) =>
+                    product.name
+                        .toLowerCase()
+                        .includes(event.target.value.trim().toLowerCase())
+                )
+            );
         });
     }
-
-    const filteredProducts = products.filter((product) =>
-        product.name.toLowerCase().includes(query)
-    );
 
     return (
         <>
