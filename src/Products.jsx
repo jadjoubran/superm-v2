@@ -15,13 +15,12 @@ export default function Products() {
     const [filteredProducts, setFilteredProducts] = useState(products);
 
     function handleSearchChange(event) {
-        setQuery(event.target.value);
+        const searchQuery = event.target.value.trim().toLowerCase();
+        setQuery(searchQuery);
         startTransition(() => {
             setFilteredProducts(
                 products.filter((product) =>
-                    product.name
-                        .toLowerCase()
-                        .includes(event.target.value.trim().toLowerCase())
+                    product.name.toLowerCase().includes(searchQuery)
                 )
             );
         });
