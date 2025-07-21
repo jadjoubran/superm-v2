@@ -15,7 +15,7 @@ export default function Products() {
     const [filteredProducts, setFilteredProducts] = useState(products);
 
     function handleSearchChange(event) {
-        setQuery(event.target.value.trim().toLowerCase());
+        setQuery(event.target.value);
         startTransition(() => {
             setFilteredProducts(
                 products.filter((product) =>
